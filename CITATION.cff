@@ -1,0 +1,30 @@
+# Referência do formato: https://citation-file-format.github.io/
+cff-version: 1.2.0
+message: "Se você usar este software ou estes dados, cite-os conforme abaixo."
+title: "rpms-ptbr: Dados e rotinas de análise de concordância da adaptação transcultural da RPMS para o português brasileiro"
+type: software
+abstract: >-
+  Dados brutos anonimizados e rotinas de análise (Python) usadas na
+  adaptação transcultural da Refugee Post-Migration Stress Scale (RPMS)
+  para o português brasileiro. Reproduz os coeficientes de concordância
+  (AC1 de Gwet, Kappa de Fleiss, Alpha de Krippendorff, CVI) reportados
+  no artigo e no pôster.
+authors:
+  - given-names: Guilherme
+    family-names: Lacerda de Avila
+    orcid: "https://orcid.org/0009-0006-3063-4030"
+    affiliation: "Gran Centro Universitário"
+keywords:
+  - refugiados
+  - adaptação transcultural
+  - AC1 de Gwet
+  - validade de conteúdo
+  - psicometria
+# Licença ainda não definida formalmente (ver README.md, seção "Status e
+# licença"). Sem este campo, o CFF não declara licença — coerente com o
+# estado real do projeto. Preencher quando a equipe decidir (ex.:
+# "CC-BY-4.0" para os dados, "MIT" para o código, se optarem por licenças
+# distintas).
+repository-code: "https://github.com/lacerdaguilherme/rpms-ptbr"
+version: 1.0.0
+date-released: "2026-09-12"

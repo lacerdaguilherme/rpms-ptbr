@@ -1,0 +1,12 @@
+# Saída das execuções: reproduzível a partir dos dados e scripts, não
+# versionada para não acumular dezenas de runs quase idênticos. Ver
+# README.md, seção "Como rodar".
+estatistica/resultados/*
+!estatistica/resultados/.gitkeep
+
+__pycache__/
+*.py[co]
+.venv/
+*.lock
+!uv.lock
+.DS_Store

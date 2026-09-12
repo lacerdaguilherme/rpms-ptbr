@@ -1,0 +1,12 @@
+[project]
+name = "rpms-ptbr"
+version = "0.1.0"
+description = "Dados e rotinas de análise de concordância da adaptação transcultural da RPMS para o português brasileiro"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib>=3.9",
+    "openpyxl>=3.1.5",
+    "pandas>=3.0.5",
+    "statsmodels>=0.14.6",
+]
