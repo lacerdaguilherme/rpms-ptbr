@@ -26,5 +26,12 @@ keywords:
 # "CC-BY-4.0" para os dados, "MIT" para o código, se optarem por licenças
 # distintas).
 repository-code: "https://github.com/lacerdaguilherme/rpms-ptbr"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22730156"
+    description: "Concept DOI: aponta sempre para a versão mais recente arquivada no Zenodo"
+  - type: doi
+    value: "10.5281/zenodo.22730157"
+    description: "DOI da versão v1.0.0 especificamente"
 version: 1.0.0
 date-released: "2026-09-12"

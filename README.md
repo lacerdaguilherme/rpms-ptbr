@@ -1,6 +1,6 @@
 # RPMS-PT/BR: dados e análises de concordância
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22730156.svg)](https://doi.org/10.5281/zenodo.22730156)
 <!-- Badge fica quebrado até o primeiro release no Zenodo. Trocar o DOI acima quando existir. -->
 
 Material de reprodução das análises estatísticas do estudo de adaptação
@@ -283,6 +283,6 @@ deste arquivo assim que existir.
 
 > Avila, G. L. de. (2026). *rpms-ptbr: Dados e rotinas de análise de
 > concordância da adaptação transcultural da RPMS para o português
-> brasileiro* [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+> brasileiro* [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.22730156
 
 ORCID do autor: [0009-0006-3063-4030](https://orcid.org/0009-0006-3063-4030).
