@@ -40,6 +40,7 @@
 #   uv run estatistica/concordancia_traducao.py
 #   uv run estatistica/concordancia_traducao.py "caminho/outro_arquivo.xlsx"
 
+import csv
 import re
 import sys
 import textwrap
@@ -67,8 +68,15 @@ COLUNA_ESPECIALISTA = 4  # D - Tradução (Português - especialista)
 COLUNA_EQUIPE = 5  # E - Versão Proposta Equipe
 
 PASTA_DO_SCRIPT = Path(__file__).resolve().parent
-ARQUIVO_PADRAO = PASTA_DO_SCRIPT.parent / "Versão Corrigida dos Tradutores.xlsx"
+ARQUIVO_PADRAO = (
+    PASTA_DO_SCRIPT.parent
+    / "dados"
+    / "brutos-sensiveis"
+    / "Versão Corrigida dos Tradutores.xlsx"
+)
 PASTA_RESULTADOS = PASTA_DO_SCRIPT / "resultados"
+PASTA_DADOS_PUBLICOS = PASTA_DO_SCRIPT.parent / "dados"
+NOME_CSV_PUBLICO = "concordancia_traducao_por_item.csv"
 
 
 def normalizar_texto(texto):
@@ -306,6 +314,39 @@ def montar_resumo_para_figura(agregados):
     return {"titulo": titulo, "colunas": colunas, "valores": valores, "notas": notas}
 
 
+def salvar_csv_publico(resultados):
+    """
+    Salva só o resultado NUMÉRICO da comparação por item (rótulo,
+    idêntico/diferente, % de similaridade) - sem nenhuma coluna de texto.
+    O texto dos itens é do instrumento original de Malm et al. (2020) e
+    não temos autorização pra redistribuir; a % de similaridade é um dado
+    derivado nosso, calculado a partir do texto, não o texto em si, então
+    pode ser publicado (Zenodo/GitHub) sem infringir direito autoral.
+    """
+    PASTA_DADOS_PUBLICOS.mkdir(parents=True, exist_ok=True)
+    caminho_completo = PASTA_DADOS_PUBLICOS / NOME_CSV_PUBLICO
+
+    colunas = [
+        "rotulo",
+        "exato_leiga_especialista",
+        "exato_leiga_equipe",
+        "exato_especialista_equipe",
+        "exato_todos",
+        "sim_leiga_especialista",
+        "sim_leiga_equipe",
+        "sim_especialista_equipe",
+        "sim_media",
+    ]
+
+    with caminho_completo.open("w", newline="", encoding="utf-8") as arquivo:
+        escritor = csv.DictWriter(arquivo, fieldnames=colunas)
+        escritor.writeheader()
+        for r in resultados:
+            escritor.writerow({coluna: r[coluna] for coluna in colunas})
+
+    return caminho_completo
+
+
 def salvar_relatorio_em_arquivo(texto_relatorio, agora):
     PASTA_RESULTADOS.mkdir(parents=True, exist_ok=True)
 
@@ -469,6 +510,13 @@ def main():
 
     caminho_html = salvar_html_relatorio(resumo, caminho_imagem.name, agora)
     print("Página HTML (com a imagem mais recente) salva em: " + str(caminho_html))
+
+    caminho_csv_publico = salvar_csv_publico(resultados)
+    print(
+        "CSV público (sem texto do instrumento, só idêntico/similaridade por item) salvo em: "
+        + str(caminho_csv_publico)
+    )
+    print("Esse CSV é seguro pra publicar no Zenodo/GitHub - ver verificar_concordancia_traducao.py")
 
 
 if __name__ == "__main__":

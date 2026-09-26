@@ -1,0 +1,91 @@
+comparacao,rotulo,exato,similaridade
+Retradução 1 × Original,Título da escala,False,65.11627906976744
+Retradução 1 × Original,Instrução,False,87.35632183908046
+Retradução 1 × Original,Opção de resposta 1,True,100.0
+Retradução 1 × Original,Opção de resposta 2,False,33.33333333333333
+Retradução 1 × Original,Opção de resposta 3,True,100.0
+Retradução 1 × Original,Opção de resposta 4,False,40.0
+Retradução 1 × Original,Opção de resposta 5,False,12.5
+Retradução 1 × Original,Item 1,False,64.44444444444444
+Retradução 1 × Original,Item 2,False,80.48780487804879
+Retradução 1 × Original,Item 3,False,69.23076923076923
+Retradução 1 × Original,Item 4,False,43.58974358974359
+Retradução 1 × Original,Item 5,False,63.366336633663366
+Retradução 1 × Original,Item 6,False,70.08547008547008
+Retradução 1 × Original,Item 7,False,76.92307692307693
+Retradução 1 × Original,Item 8a,False,91.95402298850574
+Retradução 1 × Original,Item 8b,False,93.02325581395348
+Retradução 1 × Original,Item 9,False,89.60000000000001
+Retradução 1 × Original,Item 10a,False,91.8918918918919
+Retradução 1 × Original,Item 10b,False,85.0
+Retradução 1 × Original,Item 11,False,69.23076923076923
+Retradução 1 × Original,Item 12,False,77.55102040816327
+Retradução 1 × Original,Item 13,False,84.21052631578947
+Retradução 1 × Original,Item 14,False,52.52525252525253
+Retradução 1 × Original,Item 15,False,47.61904761904761
+Retradução 1 × Original,Item 15 ⚠ NUMERAÇÃO DUPLICADA NA PLANILHA FONTE (conferir manualmente qual item é esse de verdade antes de usar esse número no artigo),False,41.1214953271028
+Retradução 1 × Original,Item 17,False,63.55140186915887
+Retradução 1 × Original,Item 18,False,56.69291338582677
+Retradução 1 × Original,Item 19,False,92.95774647887323
+Retradução 1 × Original,Item 20,False,92.7536231884058
+Retradução 1 × Original,Item 21,False,53.333333333333336
+Retradução 2 × Original,Título da escala,False,67.44186046511628
+Retradução 2 × Original,Instrução,False,75.5980861244019
+Retradução 2 × Original,Opção de resposta 1,True,100.0
+Retradução 2 × Original,Opção de resposta 2,False,33.33333333333333
+Retradução 2 × Original,Opção de resposta 3,True,100.0
+Retradução 2 × Original,Opção de resposta 4,False,40.0
+Retradução 2 × Original,Opção de resposta 5,False,12.5
+Retradução 2 × Original,Item 1,False,72.72727272727273
+Retradução 2 × Original,Item 2,False,87.87878787878788
+Retradução 2 × Original,Item 3,False,69.23076923076923
+Retradução 2 × Original,Item 4,False,71.05263157894737
+Retradução 2 × Original,Item 5,False,42.201834862385326
+Retradução 2 × Original,Item 6,False,64.86486486486487
+Retradução 2 × Original,Item 7,False,65.48672566371681
+Retradução 2 × Original,Item 8a,False,77.10843373493977
+Retradução 2 × Original,Item 8b,False,74.4186046511628
+Retradução 2 × Original,Item 9,False,66.10169491525424
+Retradução 2 × Original,Item 10a,False,68.57142857142857
+Retradução 2 × Original,Item 10b,False,63.1578947368421
+Retradução 2 × Original,Item 11,False,76.31578947368422
+Retradução 2 × Original,Item 12,False,63.63636363636363
+Retradução 2 × Original,Item 13,False,68.46846846846847
+Retradução 2 × Original,Item 14,False,67.3076923076923
+Retradução 2 × Original,Item 15,False,64.0
+Retradução 2 × Original,Item 15 ⚠ NUMERAÇÃO DUPLICADA NA PLANILHA FONTE (conferir manualmente qual item é esse de verdade antes de usar esse número no artigo),False,41.1214953271028
+Retradução 2 × Original,Item 17,False,61.6822429906542
+Retradução 2 × Original,Item 18,False,61.87050359712231
+Retradução 2 × Original,Item 19,False,84.84848484848484
+Retradução 2 × Original,Item 20,False,92.3076923076923
+Retradução 2 × Original,Item 21,False,57.534246575342465
+Retradução 1 × Retradução 2,titulo,False,92.5
+Retradução 1 × Retradução 2,instrucao,False,79.02439024390245
+Retradução 1 × Retradução 2,Item escala_1,True,100.0
+Retradução 1 × Retradução 2,Item escala_2,True,100.0
+Retradução 1 × Retradução 2,Item escala_3,True,100.0
+Retradução 1 × Retradução 2,Item escala_4,True,100.0
+Retradução 1 × Retradução 2,Item escala_5,True,100.0
+Retradução 1 × Retradução 2,Item 1,False,86.02150537634408
+Retradução 1 × Retradução 2,Item 2,False,79.48717948717949
+Retradução 1 × Retradução 2,Item 3,True,100.0
+Retradução 1 × Retradução 2,Item 4,False,65.78947368421053
+Retradução 1 × Retradução 2,Item 5,False,68.96551724137932
+Retradução 1 × Retradução 2,Item 6,False,75.43859649122807
+Retradução 1 × Retradução 2,Item 7,False,75.0
+Retradução 1 × Retradução 2,Item 8a,False,80.0
+Retradução 1 × Retradução 2,Item 8b,False,82.6086956521739
+Retradução 1 × Retradução 2,Item 9,False,63.41463414634146
+Retradução 1 × Retradução 2,Item 10a,False,78.94736842105263
+Retradução 1 × Retradução 2,Item 10b,False,81.81818181818183
+Retradução 1 × Retradução 2,Item 11,False,90.0
+Retradução 1 × Retradução 2,Item 12,False,87.17948717948718
+Retradução 1 × Retradução 2,Item 13,False,83.80952380952381
+Retradução 1 × Retradução 2,Item 14,False,67.32673267326733
+Retradução 1 × Retradução 2,Item 15,True,100.0
+Retradução 1 × Retradução 2,Item 15,True,100.0
+Retradução 1 × Retradução 2,Item 17,False,80.3921568627451
+Retradução 1 × Retradução 2,Item 18,False,78.68852459016394
+Retradução 1 × Retradução 2,Item 19,False,81.15942028985508
+Retradução 1 × Retradução 2,Item 20,False,88.23529411764706
+Retradução 1 × Retradução 2,Item 21,False,47.61904761904761

@@ -44,6 +44,7 @@
 # Como rodar:
 #   uv run estatistica/concordancia_retrotraducao.py
 
+import csv
 import re
 import sys
 import textwrap
@@ -95,7 +96,10 @@ COLUNA_RETROTRADUCAO = 2  # B - "Retradução para o Inglês"
 
 PASTA_DO_SCRIPT = Path(__file__).resolve().parent
 PASTA_PROJETO = PASTA_DO_SCRIPT.parent
+PASTA_BRUTOS_SENSIVEIS = PASTA_PROJETO / "dados" / "brutos-sensiveis"
 PASTA_RESULTADOS = PASTA_DO_SCRIPT / "resultados"
+PASTA_DADOS_PUBLICOS = PASTA_PROJETO / "dados"
+NOME_CSV_PUBLICO = "concordancia_retrotraducao_por_item.csv"
 
 
 def normalizar_texto(texto):
@@ -404,6 +408,48 @@ def montar_resumo_para_figura(agregados_vs_original, agregado_entre_retraducoes)
     return {"titulo": titulo, "colunas": colunas, "linhas_valores": linhas_valores, "notas": notas}
 
 
+def salvar_csv_publico(resultados_vs_original, resultado_entre_retraducoes):
+    """
+    Salva só o resultado NUMÉRICO da comparação por item (comparação,
+    rótulo, idêntico/diferente, % de similaridade) - sem nenhuma coluna
+    de texto. O texto original e as retrotraduções reproduzem o
+    instrumento de Malm et al. (2020), sem autorização de redistribuição;
+    a % de similaridade é dado derivado nosso, não o texto em si, então
+    pode ser publicado (Zenodo/GitHub) sem infringir direito autoral.
+    """
+    PASTA_DADOS_PUBLICOS.mkdir(parents=True, exist_ok=True)
+    caminho_completo = PASTA_DADOS_PUBLICOS / NOME_CSV_PUBLICO
+
+    colunas = ["comparacao", "rotulo", "exato", "similaridade"]
+
+    with caminho_completo.open("w", newline="", encoding="utf-8") as arquivo:
+        escritor = csv.DictWriter(arquivo, fieldnames=colunas)
+        escritor.writeheader()
+
+        for nome, resultados in resultados_vs_original.items():
+            for r in resultados:
+                escritor.writerow(
+                    {
+                        "comparacao": nome + " × Original",
+                        "rotulo": r["rotulo"],
+                        "exato": r["exato"],
+                        "similaridade": r["similaridade"],
+                    }
+                )
+
+        for r in resultado_entre_retraducoes:
+            escritor.writerow(
+                {
+                    "comparacao": "Retradução 1 × Retradução 2",
+                    "rotulo": r["rotulo"],
+                    "exato": r["exato"],
+                    "similaridade": r["similaridade"],
+                }
+            )
+
+    return caminho_completo
+
+
 def salvar_relatorio_em_arquivo(texto_relatorio, agora):
     PASTA_RESULTADOS.mkdir(parents=True, exist_ok=True)
 
@@ -544,7 +590,7 @@ def salvar_html_relatorio(resumo, nome_da_imagem, agora):
 
 
 def main():
-    caminho_projeto = PASTA_PROJETO
+    caminho_projeto = PASTA_BRUTOS_SENSIVEIS
 
     if not (caminho_projeto / ARQUIVO_ORIGINAL).exists():
         print("Não achei o arquivo: " + str(caminho_projeto / ARQUIVO_ORIGINAL))
@@ -580,6 +626,13 @@ def main():
 
     caminho_html = salvar_html_relatorio(resumo, caminho_imagem.name, agora)
     print("Página HTML (com a imagem mais recente) salva em: " + str(caminho_html))
+
+    caminho_csv_publico = salvar_csv_publico(resultados_vs_original, resultado_entre_retraducoes)
+    print(
+        "CSV público (sem texto do instrumento, só idêntico/similaridade por item) salvo em: "
+        + str(caminho_csv_publico)
+    )
+    print("Esse CSV é seguro pra publicar no Zenodo/GitHub - ver verificar_concordancia_retrotraducao.py")
 
 
 if __name__ == "__main__":

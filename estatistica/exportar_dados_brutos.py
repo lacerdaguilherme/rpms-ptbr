@@ -40,6 +40,7 @@ COLUNA_JUSTIFICATIVA = 4  # coluna D
 PASTA_DO_SCRIPT = Path(__file__).resolve().parent
 PASTA_RAIZ = PASTA_DO_SCRIPT.parent
 PASTA_DADOS = PASTA_RAIZ / "dados"
+PASTA_BRUTOS_SENSIVEIS = PASTA_DADOS / "brutos-sensiveis"
 
 PLANILHAS = [
     ("Avaliação EPMR Juízes Especialistas.xlsx", "avaliacao_epmr.csv"),
@@ -117,7 +118,7 @@ def main():
     houve_erro = False
 
     for nome_excel, nome_csv in PLANILHAS:
-        caminho_excel = PASTA_RAIZ / nome_excel
+        caminho_excel = PASTA_BRUTOS_SENSIVEIS / nome_excel
 
         if not caminho_excel.exists():
             print("Não achei a planilha: " + str(caminho_excel))

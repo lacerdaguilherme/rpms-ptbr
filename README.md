@@ -3,6 +3,8 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22730156.svg)](https://doi.org/10.5281/zenodo.22730156)
 <!-- Badge fica quebrado até o primeiro release no Zenodo. Trocar o DOI acima quando existir. -->
 
+🇧🇷 Português (este arquivo) · [🇺🇸 English](README.en.md) · [🇪🇸 Español](README.es.md)
+
 Material de reprodução das análises estatísticas do estudo de adaptação
 transcultural da *Refugee Post-Migration Stress Scale* (RPMS) para o
 português brasileiro.
@@ -57,6 +59,11 @@ uv run estatistica/krippendorff_alpha_rpms.py
 
 # texto e tabelas da seção de Resultados, preenchidos com os números acima
 uv run estatistica/gerar_texto_resultados.py
+
+# verificação independente da concordância de tradução/retrotradução
+# (não precisa das planilhas privadas, só do CSV público em dados/)
+uv run estatistica/verificar_concordancia_traducao.py
+uv run estatistica/verificar_concordancia_retrotraducao.py
 ```
 
 Cada script imprime o resultado no terminal e salva três arquivos em
@@ -74,8 +81,10 @@ uv run estatistica/ac1_epmr.py caminho/para/outros_dados.csv
 
 ```
 dados/
-├── avaliacao_epmr.csv    painel de juízes especialistas
-└── avaliacao_rpms.csv    painel da população-alvo
+├── avaliacao_epmr.csv                          painel de juízes especialistas
+├── avaliacao_rpms.csv                           painel da população-alvo
+├── concordancia_traducao_por_item.csv           % de concordância entre traduções, por item
+└── concordancia_retrotraducao_por_item.csv      % de concordância na retrotradução, por item
 ```
 
 Uma linha por resposta, 84 linhas por arquivo (21 itens × 4 juízes):
@@ -180,26 +189,30 @@ A explicação completa, com a matemática, está em
 
 ```
 dados/
-├── avaliacao_epmr.csv               dados brutos, painel de especialistas
-└── avaliacao_rpms.csv               dados brutos, painel da população-alvo
+├── avaliacao_epmr.csv                          dados brutos, painel de especialistas
+├── avaliacao_rpms.csv                           dados brutos, painel da população-alvo
+├── concordancia_traducao_por_item.csv           % de concordância entre traduções, por item (sem texto)
+└── concordancia_retrotraducao_por_item.csv      % de concordância na retrotradução, por item (sem texto)
 
 estatistica/
-├── ac1_epmr.py                      AC1 de Gwet isolado (vai no artigo)
+├── ac1_epmr.py                            AC1 de Gwet isolado (vai no artigo)
 ├── ac1_rpms.py
-├── cvi_ac1_epmr.py                  CVI e AC1 lado a lado
+├── cvi_ac1_epmr.py                        CVI e AC1 lado a lado
 ├── cvi_ac1_rpms.py
-├── fleiss_kappa_epmr.py             verificação de robustez
+├── fleiss_kappa_epmr.py                   verificação de robustez
 ├── fleiss_kappa_rpms.py
-├── krippendorff_alpha_epmr.py       verificação de robustez
+├── krippendorff_alpha_epmr.py             verificação de robustez
 ├── krippendorff_alpha_rpms.py
-├── concordancia_traducao.py         % de concordância entre traduções
-├── concordancia_retrotraducao.py    % de concordância na retrotradução
-├── exportar_dados_brutos.py         gera os CSVs a partir das planilhas
-├── gerar_texto_resultados.py        monta o texto da seção de Resultados
-├── CODEBOOK.md                      dicionário de dados
-├── EXPLICACAO.md                    explicação linha a linha de cada script
-├── RESULTADOS_PARA_ARTIGO.md        texto, tabelas e referências
-└── resultados/                      saída das execuções
+├── concordancia_traducao.py               % de concordância entre traduções (precisa da planilha privada)
+├── concordancia_retrotraducao.py          % de concordância na retrotradução (precisa da planilha privada)
+├── verificar_concordancia_traducao.py     reproduz o % acima só com o CSV público
+├── verificar_concordancia_retrotraducao.py  reproduz o % acima só com o CSV público
+├── exportar_dados_brutos.py               gera os CSVs a partir das planilhas
+├── gerar_texto_resultados.py               monta o texto da seção de Resultados
+├── CODEBOOK.md                             dicionário de dados
+├── EXPLICACAO.md                           explicação linha a linha de cada script
+├── RESULTADOS_PARA_ARTIGO.md               texto, tabelas e referências
+└── resultados/                             saída das execuções
 ```
 
 Cada script é independente e pode ser lido do começo ao fim sem consultar
@@ -217,6 +230,18 @@ Eles leem planilhas com o texto completo da escala nas três versões, que
 (2020), e a redistribuição do texto integral depende de autorização que
 ainda não foi formalizada. Os scripts ficam no repositório para
 documentar o método; para executá-los é preciso ter as planilhas.
+
+O que **é** publicado é o resultado numérico da comparação, item a item
+(`dados/concordancia_traducao_por_item.csv`,
+`dados/concordancia_retrotraducao_por_item.csv`): rótulo do item,
+idêntico/diferente e % de similaridade — sem nenhuma coluna de texto. Uma
+% de similaridade calculada a partir do texto é dado derivado nosso, não
+o texto em si, então publicá-la não redistribui o instrumento do Malm et
+al. Os scripts `verificar_concordancia_traducao.py` e
+`verificar_concordancia_retrotraducao.py` leem só esses CSVs e reproduzem
+os percentuais reportados no artigo (46,4% e 6,7%) sem depender das
+planilhas privadas — é o caminho pensado para quem quer auditar esses
+dois números sem precisar de acesso ao instrumento original.
 
 ## Dependências
 
@@ -277,12 +302,21 @@ os dados em outra pesquisa, entre em contato antes.
 ## Como citar
 
 Este repositório é citável via CITATION.cff (o próprio GitHub mostra o
-botão "Cite this repository" na página do repo) e, depois do primeiro
-release, via DOI permanente emitido pelo Zenodo — ver o badge no topo
-deste arquivo assim que existir.
+botão "Cite this repository" na página do repo) e via DOI permanente
+emitido pelo Zenodo — ver o badge no topo deste arquivo.
+
+**APA 7ª edição:**
 
 > Avila, G. L. de. (2026). *rpms-ptbr: Dados e rotinas de análise de
 > concordância da adaptação transcultural da RPMS para o português
-> brasileiro* [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.22730156
+> brasileiro* (Version 1.0.0) [Computer software]. Zenodo.
+> https://doi.org/10.5281/zenodo.22730156
+
+**ABNT (NBR 6023):**
+
+> ÁVILA, Guilherme Lacerda de. **rpms-ptbr**: dados e rotinas de análise
+> de concordância da adaptação transcultural da RPMS para o português
+> brasileiro. Versão 1.0.0. [*S. l.*]: Zenodo, 2026. Disponível em:
+> https://doi.org/10.5281/zenodo.22730156. Acesso em: [data de acesso].
 
 ORCID do autor: [0009-0006-3063-4030](https://orcid.org/0009-0006-3063-4030).
